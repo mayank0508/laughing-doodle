@@ -1,8 +1,13 @@
 const startGameBtn = document.getElementById('start-game-btn');
 
-function startGame() {
-console.log('Game is starting soon....')
+function startGame() {            // this is a declaration
+    console.log('Game is starting soon....')
 }
+
+// const start = function startGame() {            // this is a expression
+//     console.log('Game is starting soon....')
+//     }
+
 
 // const greeting = {
 //     name: 'mayank',
@@ -12,5 +17,7 @@ console.log('Game is starting soon....')
 // };
 
 // greeting.greet();
+
+//console.dir(startGame);
 
 startGameBtn.addEventListener('click', startGame);

@@ -4,6 +4,9 @@ const ROCK = 'ROCK';
 const PAPER = 'PAPER';
 const SCISSORS = 'SCISSORS';
 const DEFAULT_CHOICE = ROCK;
+const RESULT_DRAW = 'DRAW';
+const PLAYER_WIN = 'PLAYER_WIN';
+const COMPUTER_WIN = 'COMPUTER_WIN';
 
 let gameIsRunning = false;
 
@@ -24,11 +27,24 @@ const getComputuerCHoice = function(){
     const randomValue = Math.random();
     if(randomValue < 0.34){
         return ROCK;
-    } else if(randomValue <0.67){
+    } else if(randomValue <0.67){       // this is a code to get a random value by computer
         return PAPER;
     } else {
         return SCISSORS;
     }
+}
+
+const getWinner = function (cChoice, pChoice){
+    if(cChoice === pChoice){
+        return RESULT_DRAW;
+    } else if ( cChoice === ROCK && pChoice === PAPER 
+             || cChoice === PAPER && pChoice === SCISSORS 
+             || cChoice === SCISSORS && pChoice === ROCK)
+            {
+                return PLAYER_WIN;
+            } else{
+                return COMPUTER_WIN;
+            } 
 }
 
 startGameBtn.addEventListener('click', function (){

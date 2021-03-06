@@ -1,23 +1,25 @@
 const startGameBtn = document.getElementById('start-game-btn');
 
-function startGame() {            // this is a declaration
-    console.log('Game is starting soon....')
-}
+const ROCK = 'ROCK';
+const PAPER = 'PAPER';
+const SCISSORS = 'SCISSORS';
+const DEFAULT_CHOICE = ROCK;
 
-// const start = function startGame() {            // this is a expression
-//     console.log('Game is starting soon....')
-//     }
+const getPlayerChoice = function(){
+    const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}??`, '').toUpperCase();
+    if(
+        selection !== ROCK && 
+        selection !== PAPER && 
+        selection !== SCISSORS
+        ){
+           alert(`You make a Invaldi choice! We chose ${DEFAULT_CHOICE} for you`);
+           return DEFAULT_CHOICE; 
+         }
+         return selection;
+};
 
-
-// const greeting = {
-//     name: 'mayank',
-//     greet: function greet(){
-//         console.log('Hey, Mate!')
-//     }
-// };
-
-// greeting.greet();
-
-//console.dir(startGame);
-
-startGameBtn.addEventListener('click', startGame);
+startGameBtn.addEventListener('click', function (){
+    console.log('Game is starting soon....',);
+    const playerSelection = getPlayerChoice();
+    console.log(playerSelection);
+});

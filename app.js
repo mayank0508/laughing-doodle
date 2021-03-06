@@ -20,6 +20,17 @@ const getPlayerChoice = function(){
          return selection;
 };
 
+const getComputuerCHoice = function(){
+    const randomValue = Math.random();
+    if(randomValue < 0.34){
+        return ROCK;
+    } else if(randomValue <0.67){
+        return PAPER;
+    } else {
+        return SCISSORS;
+    }
+}
+
 startGameBtn.addEventListener('click', function (){
     if(gameIsRunning){
         return;
@@ -27,5 +38,6 @@ startGameBtn.addEventListener('click', function (){
     gameIsRunning = true;
     console.log('Game is starting soon....',);
     const playerSelection = getPlayerChoice();
+    const computerChoice = getComputuerCHoice();
     console.log(playerSelection);
 });

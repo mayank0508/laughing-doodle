@@ -34,7 +34,7 @@ const getComputuerCHoice = function(){
     }
 }
 
-const getWinner = (cChoice, pChoice) => {
+const getWinner = (cChoice, pChoice) => 
 
          cChoice === pChoice
        ? RESULT_DRAW 
@@ -43,7 +43,6 @@ const getWinner = (cChoice, pChoice) => {
          (cChoice === SCISSORS && pChoice === ROCK)      // this is an alternative and fairly easy way to
        ? PLAYER_WIN                                      // make a function
        : COMPUTER_WIN; 
-}
 
 //     if(cChoice === pChoice){
 //         return RESULT_DRAW;
@@ -65,15 +64,15 @@ startGameBtn.addEventListener('click', () => {
     console.log('Game is starting soon....',);
     const playerSelection = getPlayerChoice();                // these 3 lines are nothing but function declsrions
     const computerChoice = getComputuerCHoice();
-    const winnerResult = getWinner(getComputuerCHoice, getPlayerChoice);
-    let message;
+    const winnerResult = getWinner(computerChoice, playerSelection);
+    let message = `YOU PICKED ${playerSelection} & COMPUTER PICKED ${computerChoice}, THATS WHY YOU` ;
     if(winnerResult === RESULT_DRAW){
-        message = `YOU PICKED ${playerSelection} & COMPUTER PICKED ${computerChoice}, THATS WHY YOU HAVE  A DRAW`;
+        message = message + ' HAD A DRAW';
     } else if  (winnerResult === PLAYER_WIN) {
-        message = `YOU PICKED ${playerSelection} & COMPUTER PICKED ${computerChoice}, THATS WHY YOU WON`;
+        message = message + ' WON';
     } else {
-        message = `YOU PICKED ${playerSelection} & COMPUTER PICKED ${computerChoice}, THATS WHY YOU LOST`;
+        message = message + ' LOST';
     }
-    console.log(message);
-    console.log(winnerResult);
+    alert(message);
+    gameIsRunning = false;
 });

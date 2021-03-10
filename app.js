@@ -17,8 +17,8 @@ const getPlayerChoice = () => {
         selection !== PAPER && 
         selection !== SCISSORS
         ){
-           alert(`You make a Invaldi choice! We chose ${DEFAULT_CHOICE} for you`);
-           return DEFAULT_CHOICE; 
+           alert(`You make a Invalid choice! We chose ${DEFAULT_CHOICE} for you`);
+           return ; 
          }
          return selection;
 };
@@ -34,7 +34,7 @@ const getComputuerCHoice = function(){
     }
 }
 
-const getWinner = (cChoice, pChoice) => 
+const getWinner = (cChoice, pChoice = DEFAULT_CHOICE) => 
 
          cChoice === pChoice
        ? RESULT_DRAW 
@@ -42,7 +42,7 @@ const getWinner = (cChoice, pChoice) =>
          (cChoice === PAPER && pChoice === SCISSORS) ||
          (cChoice === SCISSORS && pChoice === ROCK)      // this is an alternative and fairly easy way to
        ? PLAYER_WIN                                      // make a function
-       : COMPUTER_WIN; 
+       : COMPUTER_WIN;
 
 //     if(cChoice === pChoice){
 //         return RESULT_DRAW;
@@ -62,10 +62,15 @@ startGameBtn.addEventListener('click', () => {
     }
     gameIsRunning = true;
     console.log('Game is starting soon....',);
-    const playerSelection = getPlayerChoice();                // these 3 lines are nothing but function declsrions
+    const playerSelection = getPlayerChoice();                // these 3 lines are nothing but function declarations
     const computerChoice = getComputuerCHoice();
-    const winnerResult = getWinner(computerChoice, playerSelection);
-    let message = `YOU PICKED ${playerSelection} & COMPUTER PICKED ${computerChoice}, THATS WHY YOU` ;
+    let winnerResult;
+    if (playerSelection){
+        winnerResult = getWinner(computerChoice, playerSelection);
+    } else {
+        winnerResult = getWinner(computerChoice );
+    }
+    let message = `YOU PICKED ${playerSelection || DEFAULT_CHOICE} & COMPUTER PICKED ${computerChoice}, THATS WHY YOU` ;
     if(winnerResult === RESULT_DRAW){
         message = message + ' HAD A DRAW';
     } else if  (winnerResult === PLAYER_WIN) {
@@ -76,3 +81,7 @@ startGameBtn.addEventListener('click', () => {
     alert(message);
     gameIsRunning = false;
 });
+
+// not realted to the function
+
+

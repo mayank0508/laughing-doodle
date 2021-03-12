@@ -56,8 +56,8 @@ const getWinner = (cChoice, pChoice = DEFAULT_CHOICE) =>
 //             } 
 // }
 
-startGameBtn.addEventListener('click', () => {
-    if(gameIsRunning){
+startGameBtn.addEventListener('click', () => {   //this is a call back funciton cause we are not call the function
+    if(gameIsRunning){                          // the addeventlistern is doing it
         return;
     }
     gameIsRunning = true;
@@ -86,17 +86,17 @@ startGameBtn.addEventListener('click', () => {
 
 
 
-// not related to the game
+// // not related to the game
 
-const sumUp = (...numbers) => {
-    let sum = 0;
-    for (const num of numbers) {
-        sum += num;
-    }
-    return sum;
-};
+// const sumUp = (...numbers) => {
+//     let sum = 0;
+//     for (const num of numbers) {
+//         sum += num;
+//     }
+//     return sum;
+// };
 
 
-console.log(sumUp(1,4,5,6,-34));
-console.log(sumUp(1,4,5,6,-34, 32,32,12,-54));
+// console.log(sumUp(1,4,5,6,-34));
+// console.log(sumUp(1,4,5,6,-34, 32,32,12,-54));
 
